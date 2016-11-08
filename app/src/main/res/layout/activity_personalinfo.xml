@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <include layout="@layout/layout_toolbar"/>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:showDividers="beginning|end|middle"
+                android:divider="@drawable/divider_1dp"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+            <include layout="@layout/layout_personal_choose_img"/>
+
+            <com.v7.alumniassociation.widget.GoView
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                app:gv_titleText="姓名"
+                android:id="@+id/modifyName" />
+            <com.v7.alumniassociation.widget.GoView
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                app:gv_titleText="性别"
+                android:id="@+id/modifyGender" />
+            <com.v7.alumniassociation.widget.GoView
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            app:gv_titleText="学号"
+                android:id="@+id/modifyNo" />
+            <com.v7.alumniassociation.widget.GoView
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            app:gv_titleText="系别"
+                android:id="@+id/modifyDepartment" />
+            <com.v7.alumniassociation.widget.GoView
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            app:gv_titleText="联系电话"
+                android:id="@+id/modifyPhone" />
+            <com.v7.alumniassociation.widget.GoView
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            app:gv_titleText="个人简介"
+            app:gv_subTitleText="个人简介"
+                android:id="@+id/modifyIntroduce" />
+            <com.v7.alumniassociation.widget.GoView
+                android:layout_marginTop="8dp"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                app:gv_titleText="修改密码"
+                android:id="@+id/modifyPsd" />
+
+            </LinearLayout>
+            <com.balysv.materialripple.MaterialRippleLayout
+                android:layout_marginLeft="36dp"
+                android:layout_marginRight="36dp"
+                android:layout_marginTop="48dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:mrl_rippleDelayClick="false"
+                app:mrl_rippleOverlay="true"
+                >
+                <TextView
+                    android:gravity="center"
+                    android:background="#ffffff"
+                    android:textColor="#D32F2F"
+                    android:text="退出登陆"
+                    android:layout_width="match_parent"
+                    android:layout_height="44dp"
+                    android:id="@+id/logout" />
+            </com.balysv.materialripple.MaterialRippleLayout>
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

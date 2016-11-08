@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:background="@color/background"
+    android:layout_height="match_parent">
+    <include layout="@layout/layout_toolbar"/>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:divider="@drawable/divider_1dp"
+                android:showDividers="beginning|end|middle"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="8dp"/>
+                <include layout="@layout/layout_personal_head_view" android:id="@+id/personalHeadView"/>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="8dp"/>
+
+                <com.v7.alumniassociation.widget.GoView
+                    android:id="@+id/fansList"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:gv_titleText="粉丝列表"
+                    app:gv_subTitleText=""
+                    />
+                <com.v7.alumniassociation.widget.GoView
+                    android:id="@+id/focusList"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:gv_titleText="关注列表"
+                    app:gv_subTitleText=""
+                    />
+                <com.v7.alumniassociation.widget.GoView
+                    android:id="@+id/collectionList"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:gv_titleText="收藏"
+                    app:gv_subTitleText=""
+                    />
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

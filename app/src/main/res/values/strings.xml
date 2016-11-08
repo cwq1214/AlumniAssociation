@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Alumni Association</string>
+    <string name="msg_load_ing">正在加载</string>
+
+</resources>

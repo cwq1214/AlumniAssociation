@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#2196F3</color>
+    <color name="colorPrimaryDark">#2196F3</color>
+    <color name="colorAccent">#2196F3</color>
+    <color name="colorUnSel">#757575</color>
+    <color name="borderColor">#DBDBDB</color>
+    <color name="itemBackground">#ffffff</color>
+    <color name="titleTextColor">#ffffff</color>
+
+    <color name="tabTextColorSel">#2196F3</color>
+    <color name="tabTextColorNor">#BBDEFB</color>
+    <color name="background">#f9f9f9</color>
+    <color name="itemTitleTextColor">#000000</color>
+    <color name="itemSubTitleTextColor">#757575</color>
+</resources>
