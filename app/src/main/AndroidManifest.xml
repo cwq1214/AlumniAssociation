@@ -27,6 +27,15 @@
         </activity>
 
         <activity android:name=".ui.activity.PersonalInfoActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".ui.activity.ModifyPsdActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".ui.activity.ClassDetailActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".ui.activity.SendClassMessageActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".ui.activity.UploadImgActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".ui.activity.BrowseImgActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".ui.activity.NewsDetailActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".ui.activity.SendPostActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".ui.activity.ApplyJoinClassListActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".ui.activity.CreateClassActivity" android:screenOrientation="portrait"/>
     </application>
 
 </manifest>

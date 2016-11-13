@@ -42,6 +42,7 @@ public class LoginModelImpl implements LoginContract.LoginModel{
                 if (response.ret){
                     System.out.println(response.ret);
                     UserInfo.setUserId(response.data.id);
+                    UserInfo.setHadClass(response.data.haveClass);
                     callback.result(true,null,null);
                 }else {
                     callback.result(false,response.forUser,null);

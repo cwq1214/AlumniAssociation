@@ -33,9 +33,9 @@
                 app:gv_titleText="性别"
                 android:id="@+id/modifyGender" />
             <com.v7.alumniassociation.widget.GoView
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            app:gv_titleText="学号"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                app:gv_titleText="学号"
                 android:id="@+id/modifyNo" />
             <com.v7.alumniassociation.widget.GoView
             android:layout_width="match_parent"

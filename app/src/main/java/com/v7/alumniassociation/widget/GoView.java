@@ -5,11 +5,11 @@ import android.content.res.TypedArray;
 import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
-import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.balysv.materialripple.MaterialRippleLayout;
 import com.v7.alumniassociation.R;
 
 import butterknife.BindView;
@@ -26,6 +26,8 @@ public class GoView extends FrameLayout {
     TextView subTitle;
     @BindView(R.id.go)
     ImageView go;
+    @BindView(R.id.rippleView)
+    MaterialRippleLayout rippleView;
 
     public GoView(Context context) {
         this(context, null);
@@ -36,34 +38,40 @@ public class GoView extends FrameLayout {
         LayoutInflater.from(context).inflate(R.layout.view_go_item, this, true);
         ButterKnife.bind(this);
         if (!isInEditMode())
-        initView(attrs);
+            initView(attrs);
+        setClickable(true);
+    }
+
+    @Override
+    public void setOnClickListener(OnClickListener l) {
+        rippleView.setOnClickListener(l);
     }
 
     private void initView(AttributeSet attrs) {
         TypedArray typedArray = getContext().obtainStyledAttributes(attrs, R.styleable.GoView);
 
         String titleText = typedArray.getString(R.styleable.GoView_gv_titleText);
-        if (TextUtils.isEmpty(titleText)){
-            int resId = typedArray.getResourceId(R.styleable.GoView_gv_titleText,-1);
-            if (resId!=-1){
+        if (TextUtils.isEmpty(titleText)) {
+            int resId = typedArray.getResourceId(R.styleable.GoView_gv_titleText, -1);
+            if (resId != -1) {
                 title.setText(getResources().getString(resId));
             }
-        }else {
+        } else {
             title.setText(titleText);
         }
 
         String subTitleText = typedArray.getString(R.styleable.GoView_gv_subTitleText);
-        if (TextUtils.isEmpty(subTitleText)){
-            int resId = typedArray.getResourceId(R.styleable.GoView_gv_subTitleText,-1);
-            if (resId!=-1){
+        if (TextUtils.isEmpty(subTitleText)) {
+            int resId = typedArray.getResourceId(R.styleable.GoView_gv_subTitleText, -1);
+            if (resId != -1) {
                 subTitle.setText(getResources().getString(resId));
             }
-        }else {
+        } else {
             subTitle.setText(subTitleText);
         }
 
-        int subTitleBackgroundResId = typedArray.getResourceId(R.styleable.GoView_gv_subTitleBackground,-1);
-        if (subTitleBackgroundResId!=-1){
+        int subTitleBackgroundResId = typedArray.getResourceId(R.styleable.GoView_gv_subTitleBackground, -1);
+        if (subTitleBackgroundResId != -1) {
             subTitle.setBackgroundResource(subTitleBackgroundResId);
         }
 
@@ -71,15 +79,15 @@ public class GoView extends FrameLayout {
     }
 
 
-    public void setTitleText(String titleText){
+    public void setTitleText(String titleText) {
         title.setText(titleText);
     }
 
-    public void setSubTitleText(String titleText){
+    public void setSubTitleText(String titleText) {
         subTitle.setText(titleText);
     }
 
-    public void setSubTitleBackground(int resId){
+    public void setSubTitleBackground(int resId) {
         subTitle.setBackgroundResource(resId);
     }
 }

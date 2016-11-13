@@ -8,6 +8,7 @@ public class LoginBean {
     public String no;
     public String password;
     public Integer id;
+    public boolean haveClass;
 
 
 }

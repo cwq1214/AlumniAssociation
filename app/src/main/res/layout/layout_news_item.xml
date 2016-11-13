@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="8dp"
+    android:background="@color/itemBackground"
+    >
+    <ImageView
+        android:layout_marginRight="8dp"
+        android:id="@+id/newsImg"
+        android:src="@color/borderColor"
+        android:layout_width="100dp"
+        android:layout_height="76dp" />
+
+
+    <TextView
+        android:textColor="@color/itemTitleTextColor"
+        android:textSize="19dp"
+        android:text="川普"
+        android:layout_alignTop="@id/newsImg"
+        android:layout_toRightOf="@id/newsImg"
+        android:id="@+id/newsTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:layout_toRightOf="@id/newsImg"
+        android:layout_alignBottom="@id/newsImg"
+        android:text="2016-11-11 21:58:10"
+        android:id="@+id/newsDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <LinearLayout
+        android:layout_alignParentRight="true"
+        android:layout_alignBottom="@id/newsImg"
+        android:orientation="horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:layout_marginRight="8dp"
+            android:src="@mipmap/good_nor"
+            android:id="@+id/likeImg"
+            android:layout_width="15dp"
+            android:layout_height="15dp" />
+        <TextView
+
+            android:text="111"
+            android:id="@+id/likeNum"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+
+
+</RelativeLayout>

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <include layout="@layout/layout_toolbar"/>
+
+    <ScrollView
+        android:background="@color/background"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:showDividers="beginning|end|middle"
+            android:divider="@drawable/divider_1dp"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="8dp"/>
+            <org.apmem.tools.layouts.FlowLayout
+                android:background="@color/itemBackground"
+                android:minHeight="300dp"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/userLayout">
+
+                </org.apmem.tools.layouts.FlowLayout>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="8dp"/>
+            <include layout="@layout/layout_personal_choose_img"/>
+            <com.v7.alumniassociation.widget.GoView
+                app:gv_titleText="班级名称"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:id="@+id/modifyClassName" />
+            <com.v7.alumniassociation.widget.GoView
+                app:gv_titleText="系别"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:id="@+id/modifyClassDepartment" />
+            <com.v7.alumniassociation.widget.GoView
+                app:gv_titleText="级别"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:id="@+id/modifyClassYear" />
+            <com.v7.alumniassociation.widget.GoView
+                app:gv_titleText="班级介绍"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:id="@+id/modifyClassIntroduce" />
+            <com.v7.alumniassociation.widget.GoView
+                app:gv_titleText="申请列表"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:id="@+id/goApplyView" />
+
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

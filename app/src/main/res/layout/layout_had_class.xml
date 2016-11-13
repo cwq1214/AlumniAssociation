@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <RadioGroup
+        android:background="@color/itemBackground"
+        android:orientation="horizontal"
+        android:id="@+id/head_rg"
+        android:layout_width="match_parent"
+        android:layout_height="41dp">
+        <RadioButton
+            android:textColor="@drawable/sel_tab_txcolor"
+            android:gravity="center"
+            android:button="@null"
+            android:checked="true"
+            android:id="@+id/rbMsgBoard"
+            android:text="留言板"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent" />
+        <View
+            android:background="@color/borderColor"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:layout_width="1dp"
+            android:layout_height="match_parent"/>
+        <RadioButton
+            android:textColor="@drawable/sel_tab_txcolor"
+            android:gravity="center"
+            android:button="@null"
+            android:id="@+id/rbXiangChe"
+            android:text="班级相册"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent" />
+    </RadioGroup>
+    <View
+        android:background="@color/borderColor"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"/>
+    <com.v7.alumniassociation.widget.NoScrollViewPager
+        android:id="@+id/viewPager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+</LinearLayout>

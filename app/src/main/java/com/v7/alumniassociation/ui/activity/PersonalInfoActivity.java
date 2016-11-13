@@ -1,9 +1,17 @@
 package com.v7.alumniassociation.ui.activity;
 
+import android.app.Activity;
+import android.content.ContentResolver;
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.text.InputType;
 import android.text.TextUtils;
+import android.util.Base64;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -17,9 +25,14 @@ import com.v7.alumniassociation.base.BaseActivity;
 import com.v7.alumniassociation.bean.User;
 import com.v7.alumniassociation.contract.PersonalInfoContract;
 import com.v7.alumniassociation.dialog.InputSingleTextDialog;
+import com.v7.alumniassociation.dialog.SingleChooseDialog;
 import com.v7.alumniassociation.helper.IntentHelper;
 import com.v7.alumniassociation.presenter.PersonalInfoPresenterImpl;
+import com.v7.alumniassociation.sp.UserInfo;
+import com.v7.alumniassociation.util.MediaUtil;
 import com.v7.alumniassociation.widget.GoView;
+
+import java.io.FileNotFoundException;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -62,6 +75,15 @@ public class PersonalInfoActivity extends BaseActivity<PersonalInfoContract.Pers
     @BindView(R.id.logout)
     TextView logout;
 
+    private final int type_headAvatar=1;
+    private final int type_name=2;
+    private final int type_gender=3;
+    private final int type_no=4;
+    private final int type_department=5;
+    private final int type_tel=6;
+    private final int type_introduce=7;
+    int modifyType =0;
+
     @Override
     protected View getContentView() {
         return null;
@@ -87,7 +109,26 @@ public class PersonalInfoActivity extends BaseActivity<PersonalInfoContract.Pers
     @Override
     public void updateUserInfoCallback(boolean isSuccess, String updateString) {
         if (isSuccess) {
-
+            switch (modifyType){
+                case type_department:
+                    modifyDepartment.setSubTitleText(updateString);
+                    break;
+                case type_gender:
+                    modifyGender.setSubTitleText(updateString);
+                    break;
+                case type_introduce:
+                    modifyIntroduce.setSubTitleText(updateString);
+                    break;
+                case type_name:
+                    modifyName.setSubTitleText(updateString);
+                    break;
+                case type_no:
+                    modifyNo.setSubTitleText(updateString);
+                    break;
+                case type_tel:
+                    modifyPhone.setSubTitleText(updateString);
+                    break;
+            }
         }
     }
 
@@ -120,15 +161,26 @@ public class PersonalInfoActivity extends BaseActivity<PersonalInfoContract.Pers
 
     private void initView() {
         labelChooseImg.setText("头像");
+
+        titleTitle.setText("个人信息");
+        titleFunctionRippleView.setVisibility(View.GONE);
+
     }
 
     @OnClick(R.id.logout)
     public void onLogOutClick(){
+        UserInfo.removeAll();
         IntentHelper.backToMainActivity(getContext());
     }
 
+    @OnClick(R.id.selImg)
+    public void onSelImgClick(){
+
+        IntentHelper.openSystemAlbumActivityForResult(this);
+    }
     @OnClick(R.id.modifyIntroduce)
     public void onModifyIntroduceClick(){
+
         InputSingleTextDialog dialog = new InputSingleTextDialog(getContext());
         dialog.setDialogHint("请输入个人简介");
         dialog.setDialogTitleText("个人简介");
@@ -139,7 +191,8 @@ public class PersonalInfoActivity extends BaseActivity<PersonalInfoContract.Pers
             public void onDialogClick(String inputText) {
                 User user = new User();
                 user.introduction = inputText;
-                mPresenter.updateUserInfo(user);
+                modifyType = type_introduce;
+                mPresenter.updateUserInfo("introduction",inputText);
             }
         });
         dialog.show();
@@ -157,7 +210,8 @@ public class PersonalInfoActivity extends BaseActivity<PersonalInfoContract.Pers
             public void onDialogClick(String inputText) {
                 User user = new User();
                 user.series = inputText;
-                mPresenter.updateUserInfo(user);
+                modifyType = type_department;
+                mPresenter.updateUserInfo("series",inputText);
             }
         });
         dialog.show();
@@ -175,7 +229,8 @@ public class PersonalInfoActivity extends BaseActivity<PersonalInfoContract.Pers
             public void onDialogClick(String inputText) {
                 User user = new User();
                 user.tel = inputText;
-                mPresenter.updateUserInfo(user);
+                modifyType = type_tel;
+                mPresenter.updateUserInfo("tel",inputText);
             }
         });
         dialog.show();
@@ -183,12 +238,23 @@ public class PersonalInfoActivity extends BaseActivity<PersonalInfoContract.Pers
 
     @OnClick(R.id.modifyPsd)
     public void onModifyPsdClick(){
-
+        IntentHelper.openModifyPsdActivity(this);
     }
 
     @OnClick(R.id.modifyGender)
     public void onModifyGenderClick(){
-
+        SingleChooseDialog dialog = new SingleChooseDialog(this);
+        dialog.setTitleText("请选择性别");
+        dialog.setOnDoneClickListener(new SingleChooseDialog.OnDoneClickListener() {
+            @Override
+            public void onDoneClick(String text, int index) {
+                modifyType = type_gender;
+                mPresenter.updateUserInfo("sex",text);
+            }
+        });
+        dialog.addItem("男",true);
+        dialog.addItem("女",false);
+        dialog.show();
     }
 
     @OnClick(R.id.modifyName)
@@ -203,9 +269,24 @@ public class PersonalInfoActivity extends BaseActivity<PersonalInfoContract.Pers
             public void onDialogClick(String inputText) {
                 User user = new User();
                 user.name = inputText;
-                mPresenter.updateUserInfo(user);
+                modifyType = type_name;
+                mPresenter.updateUserInfo("name",inputText);
             }
         });
         dialog.show();
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode==IntentHelper.REQUEST_CODE_GET_IMAGE&&resultCode== Activity.RESULT_OK){
+            imageResult(data);
+        }
+    }
+
+    private void imageResult(Intent data){
+        Uri uri = data.getData();
+        Log.e("uri", uri.toString());
+        mPresenter.uploadImg(MediaUtil.getRealFilePath(this,uri));
     }
 }

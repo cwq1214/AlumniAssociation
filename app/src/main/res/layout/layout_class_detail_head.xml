@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:background="@color/itemBackground"
+    android:layout_width="match_parent"
+    android:layout_height="96dp"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView
+        android:id="@+id/classAvatar"
+        android:src="@color/borderColor"
+        android:layout_marginLeft="10dp"
+        android:layout_centerVertical="true"
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        android:layout_marginRight="10dp"
+        />
+    <TextView
+        android:textSize="18dp"
+        android:textColor="@color/itemTitleTextColor"
+        android:layout_toRightOf="@id/classAvatar"
+        android:layout_alignTop="@id/classAvatar"
+        android:id="@+id/className"
+        android:text="班级名称"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <LinearLayout
+        android:layout_toRightOf="@id/classAvatar"
+        android:layout_alignBottom="@id/classAvatar"
+        android:layout_marginBottom="10dp"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/classLevel"
+            android:text="12届"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:id="@+id/department"
+            android:text="软件工程系"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <ImageView
+            android:id="@+id/personNumImg"
+            android:src="@mipmap/person"
+            android:layout_width="10dp"
+            android:layout_height="12dp" />
+        <TextView
+            android:layout_marginLeft="5dp"
+            android:id="@+id/personNum"
+            android:text="50"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
+</RelativeLayout>

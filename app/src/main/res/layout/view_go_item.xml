@@ -5,6 +5,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     app:mrl_rippleOverlay="true"
     app:mrl_rippleDelayClick="false"
+    android:clickable="true"
+    android:id="@+id/rippleView"
     >
 <RelativeLayout
     android:layout_width="match_parent"

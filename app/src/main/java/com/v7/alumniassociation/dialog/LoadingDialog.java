@@ -7,17 +7,12 @@ import android.content.Context;
 import android.os.Bundle;
 import android.widget.TextView;
 
-import net.funol.smartmarket.R;
+import com.v7.alumniassociation.R;
 
 
 /**
  * 加载中Dialog
- * 
- * @author HerotCulb
- * 
- * @E-mail herotculb@live.com
- * 
- * @Createtime 2014-5-10 上午9:14:34
+ *
  * 
  */
 public class LoadingDialog extends AlertDialog {
@@ -27,7 +22,7 @@ public class LoadingDialog extends AlertDialog {
 	private String message = null;
 	
 	public LoadingDialog(Context context) {
-		super(context);
+		super(context,R.style.dialog);
 		message = getContext().getResources().getString(R.string.msg_load_ing);
 	}
 

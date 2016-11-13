@@ -5,6 +5,8 @@ package com.v7.alumniassociation.bean;
  */
 
 public class User {
+    public int userId;
+
     public String no;
     public String img;
     public int followCount;

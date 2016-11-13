@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <include layout="@layout/layout_toolbar"/>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:padding="8dp"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <FrameLayout
+                android:layout_margin="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <EditText
+                    android:padding="8dp"
+                    android:gravity="top|left"
+                    android:background="@drawable/bg_edittext"
+                    android:minHeight="300dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:maxLength="255"
+                    android:id="@+id/edittext" />
+
+                <TextView
+                    android:layout_margin="10dp"
+                    android:layout_gravity="bottom|right"
+                    android:text="0/255"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/currentText" />
+            </FrameLayout>
+
+            <org.apmem.tools.layouts.FlowLayout
+                android:layout_marginTop="16dp"
+                android:id="@+id/flowLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <FrameLayout
+                    android:background="@color/borderColor"
+                    android:layout_width="76dp"
+                    android:layout_height="76dp"
+                    android:id="@+id/addImg">
+                    <ImageView
+                        android:layout_gravity="center"
+                        android:src="@mipmap/add"
+                        android:layout_width="18dp"
+                        android:layout_height="18dp" />
+                </FrameLayout>
+                </org.apmem.tools.layouts.FlowLayout>
+
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

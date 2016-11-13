@@ -8,7 +8,7 @@ import com.v7.alumniassociation.base.BaseCallback;
 
 public class ModifyPsdContract {
     public interface ModifyPsdModel extends BaseContract.BaseModel{
-        void updatePassword(String id, String oldPsd, String newPsd, BaseCallback callback);
+        void updatePassword(int id, String oldPsd, String newPsd, BaseCallback callback);
     }
     public interface ModifyPsdView extends BaseContract.BaseView{
         void onUpdatePsdCallback(boolean isSuccess);

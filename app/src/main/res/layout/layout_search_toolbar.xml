@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal" android:layout_width="match_parent"
+    android:layout_height="48dp"
+    android:gravity="center"
+    android:background="@color/colorPrimary"
+    >
+    <com.balysv.materialripple.MaterialRippleLayout
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:id="@+id/titleBackRippleView">
+        <ImageView
+            android:layout_gravity="center"
+            android:src="@mipmap/back"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:id="@+id/titleBack" />
+    </com.balysv.materialripple.MaterialRippleLayout>
+
+    <LinearLayout
+        android:background="@color/itemBackground"
+        android:orientation="horizontal"
+        android:layout_weight="1"
+        android:layout_width="0dp"
+        android:layout_height="33dp"
+        android:gravity="center"
+        >
+        <ImageView
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:src="@mipmap/search"
+            android:layout_width="20dp"
+            android:layout_height="20dp" />
+        <EditText
+            android:hint="请输入搜索内容"
+            android:layout_height="match_parent"
+            android:layout_width="match_parent"
+            android:textSize="11dp"
+            android:id="@+id/inputSearch" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="48dp"
+        android:layout_height="48dp"/>
+</LinearLayout>

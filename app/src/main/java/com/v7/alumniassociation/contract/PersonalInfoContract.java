@@ -10,7 +10,7 @@ import com.v7.alumniassociation.bean.User;
 public class PersonalInfoContract {
     public interface PersonalInfoModel extends BaseContract.BaseModel{
         void uploadImg(int id, String imgPath, BaseCallback callback);
-        void updateUserInfo(int id,User user,BaseCallback callback);
+        void updateUserInfo(int id,String updateKey,String updateValue,BaseCallback callback);
         void getUserInfo(int id,BaseCallback callback);
     }
     public interface PersonalInfoView extends BaseContract.BaseView{
@@ -20,7 +20,7 @@ public class PersonalInfoContract {
     }
     public interface PersonalInfoPresenter extends BaseContract.BasePresenter {
         void uploadImg(String imgPath);
-        void updateUserInfo(User user);
+        void updateUserInfo(String updateKey,String updateValue);
         void getUserInfo();
     }
 }

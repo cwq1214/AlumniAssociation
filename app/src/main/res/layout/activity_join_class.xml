@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <include layout="@layout/layout_toolbar"/>
+
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <LinearLayout
+                android:divider="@drawable/divider_1dp"
+                android:showDividers="middle|end|beginning"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="8dp"
+                >
+
+                <include layout="@layout/layout_class_detail_head"/>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="8dp"/>
+                <LinearLayout
+                    android:gravity="center_vertical"
+                    android:background="@color/itemBackground"
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="44dp">
+                    <TextView
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:textColor="@color/itemTitleTextColor"
+                        android:text="班级管理员"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                    <TextView
+                        android:layout_weight="1"
+                        android:textColor="@color/itemTitleTextColor"
+                        android:text="软件工程系"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/adminName" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="8dp"/>
+                <LinearLayout
+                    android:background="@color/itemBackground"
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:minHeight="44dp"
+                    android:gravity="center_vertical"
+                    >
+                    <TextView
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:textColor="@color/itemTitleTextColor"
+                        android:text="班级介绍"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                    <TextView
+                        android:layout_weight="1"
+                        android:layout_marginRight="10dp"
+                        android:textColor="@color/itemTitleTextColor"
+                        android:text="介绍介绍"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/introduce" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <TextView
+                android:layout_marginTop="100dp"
+                android:gravity="center"
+                android:layout_marginLeft="38dp"
+                android:layout_marginRight="38dp"
+                android:text="申请加入"
+                android:background="@color/itemBackground"
+                android:textColor="#2196F3"
+                android:layout_width="match_parent"
+                android:layout_height="44dp"
+                android:id="@+id/submit" />
+        </LinearLayout>
+    </ScrollView>
+
+
+
+</LinearLayout>

@@ -58,8 +58,8 @@ public class PersonalInfoPresenterImpl implements PersonalInfoContract.PersonalI
     }
 
     @Override
-    public void updateUserInfo(User user) {
-        model.updateUserInfo(UserInfo.getUserId(), user, new BaseCallback() {
+    public void updateUserInfo(String updateKey, String updateValue) {
+        model.updateUserInfo(UserInfo.getUserId(), updateKey, updateValue, new BaseCallback() {
             @Override
             public void result(boolean isSuccess, String message, Object extra) {
                 view.updateUserInfoCallback(isSuccess, (String) extra);
@@ -67,6 +67,8 @@ public class PersonalInfoPresenterImpl implements PersonalInfoContract.PersonalI
             }
         });
     }
+
+
 
     @Override
     public void getUserInfo() {

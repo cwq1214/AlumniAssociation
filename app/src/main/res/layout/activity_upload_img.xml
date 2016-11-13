@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <include layout="@layout/layout_toolbar"/>
+    <org.apmem.tools.layouts.FlowLayout
+        android:id="@+id/flowLayout"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="8dp">
+        <FrameLayout
+            android:background="@color/borderColor"
+            android:layout_width="76dp"
+            android:layout_height="76dp"
+            android:id="@+id/addImg">
+            <ImageView
+                android:layout_gravity="center"
+                android:src="@mipmap/add"
+                android:layout_width="18dp"
+                android:layout_height="18dp" />
+        </FrameLayout>
+
+        </org.apmem.tools.layouts.FlowLayout>
+</LinearLayout>

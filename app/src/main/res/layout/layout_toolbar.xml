@@ -1,6 +1,56 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="48dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/colorPrimary">
+    <com.balysv.materialripple.MaterialRippleLayout
+        android:id="@+id/titleBackRippleView"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        app:mrl_rippleOverlay="true"
+        app:mrl_rippleDelayClick="false"
+        >
+    <ImageView
+        android:layout_gravity="center"
+        android:src="@mipmap/back"
+        android:id="@+id/titleBack"
+        android:layout_width="24dp"
+        android:layout_height="24dp" />
+    </com.balysv.materialripple.MaterialRippleLayout>
 
-</LinearLayout>
+    <TextView
+        android:layout_centerInParent="true"
+        android:id="@+id/titleTitle"
+        android:textSize="24dp"
+        android:textColor="@color/titleTextColor"
+        android:text=""
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+
+    <com.balysv.materialripple.MaterialRippleLayout
+        android:id="@+id/titleFunctionRippleView"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:minWidth="48dp"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        app:mrl_rippleDelayClick="false"
+        app:mrl_rippleOverlay="true"
+        >
+        <TextView
+            android:layout_gravity="center"
+            android:textSize="19dp"
+            android:textColor="@color/titleTextColor"
+            android:id="@+id/titleFunction"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+          />
+    </com.balysv.materialripple.MaterialRippleLayout>
+
+
+</RelativeLayout>

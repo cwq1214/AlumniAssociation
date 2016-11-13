@@ -1,6 +1,7 @@
 package com.v7.alumniassociation.ui.activity;
 
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.EditText;
@@ -62,6 +63,14 @@ public class ModifyPsdActivity extends BaseActivity<ModifyPsdContract.ModifyPsdP
             showToast("请填写好以上信息");
             return;
         }
+        if (newPsd1.getText().length()<6){
+            showToast("密码长度不小于6位");
+            return;
+        }
+        if(newPsd1.getText().length()>16){
+            showToast("密码长度不大于16位");
+            return;
+        }
         mPresenter.updatePassword(oldPsd.getText().toString(),newPsd1.getText().toString());
     }
 
@@ -70,5 +79,16 @@ public class ModifyPsdActivity extends BaseActivity<ModifyPsdContract.ModifyPsdP
         if (isSuccess){
             finish();
         }
+    }
+
+    @Override
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        initView();
+    }
+
+    private void initView(){
+        titleTitle.setText("修改密码");
+        titleFunctionRippleView.setVisibility(View.GONE);
     }
 }

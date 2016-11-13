@@ -1,9 +1,10 @@
 package com.v7.alumniassociation.util;
 
-import android.util.DisplayMetrics;
 import android.app.Activity;
 import android.content.Context;
 import android.graphics.Rect;
+import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.Window;
 
 import java.lang.reflect.Field;
@@ -65,7 +66,7 @@ public class Screen {
             x = Integer.parseInt(field.get(obj).toString());
             sbar = context.getResources().getDimensionPixelSize(x);
         } catch (Exception e) {
-            L.i("get status bar height fail" ,e);
+            Log.i("screenUtil" ,"get status bar height fail\n"+e);
         }
         return sbar;
     }

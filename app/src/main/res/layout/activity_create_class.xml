@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <include layout="@layout/layout_toolbar"/>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <LinearLayout
+                android:divider="@drawable/divider_1dp"
+                android:showDividers="beginning|end|middle"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <include layout="@layout/layout_personal_choose_img"/>
+                <com.v7.alumniassociation.widget.GoView
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    app:gv_titleText="班级名称"
+                    android:id="@+id/className" />
+                <com.v7.alumniassociation.widget.GoView
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    app:gv_titleText="系别"
+
+                    android:id="@+id/classDepartment" />
+                <com.v7.alumniassociation.widget.GoView
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    app:gv_subTitleText="级别"
+                    android:id="@+id/classLevel" />
+                <com.v7.alumniassociation.widget.GoView
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    app:gv_subTitleText="班级介绍"
+                    android:id="@+id/classIntroduce" />
+            </LinearLayout>
+
+
+            <TextView
+                android:layout_margin="50dp"
+                android:background="@color/itemBackground"
+                android:textColor="@color/colorPrimary"
+                android:gravity="center"
+                android:text="申请创建"
+                android:layout_width="match_parent"
+                android:layout_height="44dp"
+                android:id="@+id/submit" />
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

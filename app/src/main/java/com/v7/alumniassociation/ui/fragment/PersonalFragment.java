@@ -71,6 +71,9 @@ public class PersonalFragment extends BaseFragment<PersonalContract.PersonalPres
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        titleTitle.setText("个人中心");
+        titleBackRippleView.setVisibility(View.GONE);
+        titleFunctionRippleView.setVisibility(View.GONE);
     }
 
     @Override

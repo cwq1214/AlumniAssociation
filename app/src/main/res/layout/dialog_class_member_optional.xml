@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center">
+    <TextView
+        android:paddingLeft="16dp"
+        android:gravity="center_vertical"
+        android:background="@color/colorPrimary"
+        android:textSize="15dp"
+        android:textColor="@color/titleTextColor"
+        android:text="请输入xxx"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:id="@+id/dialogTitle" />
+    <LinearLayout
+        android:orientation="vertical"
+        android:background="@color/itemBackground"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp"
+        >
+
+        <com.balysv.materialripple.MaterialRippleLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:mrl_rippleDelayClick="false"
+            app:mrl_rippleOverlay="true"
+            >
+            <TextView
+                android:textColor="@color/itemTitleTextColor"
+                android:gravity="center"
+                android:background="@drawable/shape_blackborder_whitesolid"
+                android:text="移交管理员"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:id="@+id/dialogChangeAdmin" />
+        </com.balysv.materialripple.MaterialRippleLayout>
+
+        <com.balysv.materialripple.MaterialRippleLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:mrl_rippleDelayClick="false"
+            app:mrl_rippleOverlay="true"
+            android:layout_marginTop="16dp"
+            >
+            <TextView
+                android:textColor="@color/itemTitleTextColor"
+                android:gravity="center"
+                android:background="@drawable/shape_blackborder_whitesolid"
+                android:text="移出班级"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:id="@+id/removeToClass" />
+        </com.balysv.materialripple.MaterialRippleLayout>
+
+        <com.balysv.materialripple.MaterialRippleLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:mrl_rippleDelayClick="false"
+            app:mrl_rippleOverlay="true"
+            android:layout_marginTop="16dp"
+            >
+            <TextView
+                android:textColor="@color/itemTitleTextColor"
+                android:gravity="center"
+                android:background="@drawable/shape_blackborder_whitesolid"
+                android:text="取消"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:id="@+id/cancel" />
+    </com.balysv.materialripple.MaterialRippleLayout>
+    </LinearLayout>
+
+</LinearLayout>

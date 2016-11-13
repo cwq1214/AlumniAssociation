@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="75dp"
+    android:background="@color/itemBackground"
+    >
+    <ImageView
+        android:id="@+id/classAvatar"
+        android:src="@color/borderColor"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_width="50dp"
+        android:layout_height="50dp" />
+
+
+    <TextView
+        android:textSize="18dp"
+        android:textColor="@color/itemTitleTextColor"
+        android:layout_alignTop="@id/classAvatar"
+        android:layout_toRightOf="@id/classAvatar"
+        android:id="@+id/className"
+        android:text="班级名称"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <LinearLayout
+        android:gravity="center"
+        android:layout_toRightOf="@id/classAvatar"
+        android:layout_alignBottom="@id/classAvatar"
+        android:orientation="horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <TextView
+            android:minWidth="100dp"
+            android:textSize="14dp"
+            android:text="软件系"
+            android:id="@+id/department"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <ImageView
+            android:src="@mipmap/person"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:textSize="10dp"
+            android:id="@+id/classPeopleNum"
+            android:text="10"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+</RelativeLayout>
