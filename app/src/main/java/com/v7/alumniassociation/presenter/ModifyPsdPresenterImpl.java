@@ -52,6 +52,7 @@ public class ModifyPsdPresenterImpl implements ModifyPsdContract.ModifyPsdPresen
             @Override
             public void result(boolean isSuccess, String message, Object extra) {
                 view.onUpdatePsdCallback(isSuccess);
+                view.showToast(message);
             }
         });
     }

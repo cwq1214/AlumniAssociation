@@ -121,6 +121,13 @@ public class UploadImgActivity extends BaseActivity<UploadImgContract.UploadImgP
         ImageView imageView = new ImageView(this);
         imageView.setBackgroundColor(getResources().getColor(R.color.borderColor));
         imageView.setLayoutParams(getImageViewLayoutParams());
+        imageView.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                flowLayout.removeView(v);
+                return true;
+            }
+        });
         Glide.with(this).load(img).into(imageView);
         flowLayout.addView(imageView,flowLayout.getChildCount()-1);
     }

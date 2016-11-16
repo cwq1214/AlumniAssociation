@@ -7,13 +7,18 @@ import android.support.v4.app.Fragment;
 import android.util.TypedValue;
 
 import com.v7.alumniassociation.ui.activity.ApplyJoinClassListActivity;
+import com.v7.alumniassociation.ui.activity.BBSPostDetailActivity;
 import com.v7.alumniassociation.ui.activity.BrowseImgActivity;
 import com.v7.alumniassociation.ui.activity.ClassDetailActivity;
+import com.v7.alumniassociation.ui.activity.CollectionListActivity;
+import com.v7.alumniassociation.ui.activity.CreateClassActivity;
+import com.v7.alumniassociation.ui.activity.JoinClassActivity;
 import com.v7.alumniassociation.ui.activity.LoginActivity;
 import com.v7.alumniassociation.ui.activity.MainActivity;
 import com.v7.alumniassociation.ui.activity.ModifyPsdActivity;
 import com.v7.alumniassociation.ui.activity.NewsDetailActivity;
 import com.v7.alumniassociation.ui.activity.PersonalInfoActivity;
+import com.v7.alumniassociation.ui.activity.SearchClassActivity;
 import com.v7.alumniassociation.ui.activity.SendClassMessageActivity;
 import com.v7.alumniassociation.ui.activity.SendPostActivity;
 import com.v7.alumniassociation.ui.activity.UploadImgActivity;
@@ -28,6 +33,7 @@ public class IntentHelper {
     public static final String IMAGE_URL = "IMAGE_URL";
     public static final String NEWS_ID = "NEWS_ID";
     public static final String CLASS_ID = "CLASS_ID";
+    public static final String POST_ID = "POST_ID";
 
     public static void openSystemAlbumActivityForResult(Object activityOrFragment){
         Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
@@ -91,4 +97,27 @@ public class IntentHelper {
         context.startActivity(intent);
     }
 
+    public static void openCreateClassActivity(Context context){
+        context.startActivity(new Intent(context, CreateClassActivity.class));
+    }
+    public static void openSearchClassActivity(Context context){
+        context.startActivity(new Intent(context, SearchClassActivity.class));
+    }
+
+    public static void openJoinClassActivity(Context context,int classId){
+        Intent intent = new Intent(context, JoinClassActivity.class);
+        intent.putExtra(CLASS_ID,classId);
+        context.startActivity(intent);
+
+    }
+
+    public static void openCollectionListActivity(Context context){
+        context.startActivity(new Intent(context, CollectionListActivity.class));
+    }
+
+    public static void openBBSDetailActivity(Context context,int postId){
+        Intent intent = new Intent(context, BBSPostDetailActivity.class);
+        intent.putExtra(POST_ID,postId);
+        context.startActivity(intent);
+    }
 }

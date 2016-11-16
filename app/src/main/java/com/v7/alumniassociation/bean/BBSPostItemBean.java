@@ -9,4 +9,5 @@ public class BBSPostItemBean {
     public int barCount;
     public String createdTime;
     public String content;
+    public int userId;
 }

@@ -61,7 +61,7 @@ public class MainActivity extends AppCompatActivity {
             public void onCheckedChanged(RadioGroup group, int checkedId) {
                 switch (checkedId) {
                     case R.id.btn_main_bbs:
-                        viewPager.setCurrentItem(1,true);
+                        viewPager.setCurrentItem(1);
                         break;
                     case R.id.btn_main_class:
                         if (UserInfo.getUserId()==null){
@@ -69,7 +69,7 @@ public class MainActivity extends AppCompatActivity {
                             btnMainHome.setChecked(true);
                             return;
                         }
-                        viewPager.setCurrentItem(2,true);
+                        viewPager.setCurrentItem(2);
                         break;
                     case R.id.btn_main_home:
 
@@ -80,7 +80,7 @@ public class MainActivity extends AppCompatActivity {
 //                            fragments.remove(2);
 //                            fragments.add(new NotHadClassFragment());
 //                        }
-                        viewPager.setCurrentItem(0,true);
+                        viewPager.setCurrentItem(0);
                         break;
                     case R.id.btn_main_personal:
                         if (UserInfo.getUserId()==null){
@@ -88,7 +88,7 @@ public class MainActivity extends AppCompatActivity {
                             btnMainHome.setChecked(true);
                             return;
                         }
-                        viewPager.setCurrentItem(3,true);
+                        viewPager.setCurrentItem(3);
                         break;
                 }
             }

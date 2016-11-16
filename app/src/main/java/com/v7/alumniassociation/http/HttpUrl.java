@@ -5,7 +5,7 @@ package com.v7.alumniassociation.http;
  */
 
 public class HttpUrl {
-    public static String domain = "http://192.168.199.223:8080";
+    public static String domain = "http://192.168.199.223:8080/school";
 
     public static String login="/server/user/login";
 
@@ -55,4 +55,17 @@ public class HttpUrl {
 
     public static String classList = "/server/class";
 
+    public static String createClass = "/server/class/addclass/";
+
+    public static String applyJoinClass = "/server/class/apply";
+
+    public static String doLike = "/server/new/dolike/";
+
+    public static String bbsDetail = "/server/bar/getmsg/";
+
+    public static String fengcarList = "/server/new/school";
+
+    public static String commentPost = "/server/bar/comment/";
+
+    public static String deleteComment = "/server/bar/delcomment/";
 }

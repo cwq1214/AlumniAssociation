@@ -7,13 +7,17 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.balysv.materialripple.MaterialRippleLayout;
+import com.bumptech.glide.Glide;
 import com.v7.alumniassociation.R;
 import com.v7.alumniassociation.base.BaseActivity;
 import com.v7.alumniassociation.bean.Class;
 import com.v7.alumniassociation.contract.JoinClassContract;
+import com.v7.alumniassociation.dialog.InputSingleTextDialog;
+import com.v7.alumniassociation.helper.IntentHelper;
 import com.v7.alumniassociation.presenter.JoinClassPresenterImpl;
 
 import butterknife.BindView;
+import butterknife.OnClick;
 
 /**
  * Created by v7 on 2016/11/8.
@@ -49,6 +53,8 @@ public class JoinClassActivity extends BaseActivity<JoinClassContract.JoinClassP
     @BindView(R.id.submit)
     TextView submit;
 
+    int classId;
+
     @Override
     protected View getContentView() {
         return null;
@@ -66,7 +72,16 @@ public class JoinClassActivity extends BaseActivity<JoinClassContract.JoinClassP
 
     @Override
     public void onClassInfoCallback(boolean isSuccess, Class classBean) {
+        if (isSuccess){
+            className.setText(classBean.name);
+            Glide.with(this).load(classBean.img).into(classAvatar);
+            classLevel.setText(classBean.level);
+            introduce.setText(classBean.introduction);
+            department.setText(classBean.series);
+            personNum.setText(classBean.userList.size()+"");
+            adminName.setText(classBean.admin);
 
+        }
     }
 
     @Override
@@ -82,5 +97,23 @@ public class JoinClassActivity extends BaseActivity<JoinClassContract.JoinClassP
 
         titleTitle.setText("班级详情");
         titleFunctionRippleView.setVisibility(View.GONE);
+
+        classId = getIntent().getIntExtra(IntentHelper.CLASS_ID,0);
+
+        mPresenter.getClassInfo(classId);
+    }
+
+    @OnClick(R.id.submit)
+    public void onJoinClick(){
+        InputSingleTextDialog dialog = new InputSingleTextDialog(getContext());
+        dialog.setDialogTitleText("理由");
+        dialog.setDialogHint("请输入理由");
+        dialog.setOnDialogDoneListener(new InputSingleTextDialog.OnDialogDoneListener() {
+            @Override
+            public void onDialogClick(String inputText) {
+                mPresenter.applyJoinClass(classId,inputText);
+            }
+        });
+        dialog.show();
     }
 }

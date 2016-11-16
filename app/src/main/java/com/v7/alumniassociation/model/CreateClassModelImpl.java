@@ -9,6 +9,7 @@ import com.v7.alumniassociation.bean.BaseJson;
 import com.v7.alumniassociation.bean.CreateClassBean;
 import com.v7.alumniassociation.contract.CreateClassContract;
 import com.v7.alumniassociation.http.BeanCallback;
+import com.v7.alumniassociation.http.HttpUrl;
 import com.zhy.http.okhttp.OkHttpUtils;
 
 import java.io.File;
@@ -32,7 +33,7 @@ public class CreateClassModelImpl implements CreateClassContract.CreateClassMode
             inputFile.close();
 
             bean.img = Base64.encodeToString(buffer,Base64.DEFAULT);
-            OkHttpUtils.postString().content(new Gson().toJson(bean)).build().execute(new BeanCallback<BaseJson>(context) {
+            OkHttpUtils.postString().url(HttpUrl.domain+HttpUrl.createClass).content(new Gson().toJson(bean)).build().execute(new BeanCallback<BaseJson>(context) {
                 @Override
                 public void onError(Call call, Exception e, int id) {
                     callback.result(false,e.getMessage(),null);

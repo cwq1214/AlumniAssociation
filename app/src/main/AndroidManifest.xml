@@ -36,6 +36,10 @@
         <activity android:name=".ui.activity.SendPostActivity" android:screenOrientation="portrait"/>
         <activity android:name=".ui.activity.ApplyJoinClassListActivity" android:screenOrientation="portrait"/>
         <activity android:name=".ui.activity.CreateClassActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".ui.activity.SearchClassActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".ui.activity.JoinClassActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".ui.activity.CollectionListActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".ui.activity.BBSPostDetailActivity" android:screenOrientation="portrait"/>
     </application>
 
 </manifest>

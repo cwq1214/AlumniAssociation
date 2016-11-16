@@ -6,6 +6,7 @@
     android:background="@color/itemBackground"
     >
     <ImageView
+        android:scaleType="centerCrop"
         android:layout_marginRight="8dp"
         android:id="@+id/newsImg"
         android:src="@color/borderColor"

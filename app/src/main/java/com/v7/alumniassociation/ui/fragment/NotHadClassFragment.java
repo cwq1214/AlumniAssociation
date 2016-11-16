@@ -16,6 +16,7 @@ import com.v7.alumniassociation.base.BaseFragment;
 import com.v7.alumniassociation.bean.Class;
 import com.v7.alumniassociation.bean.ClassListItemBean;
 import com.v7.alumniassociation.contract.NotHadClassContract;
+import com.v7.alumniassociation.helper.IntentHelper;
 import com.v7.alumniassociation.presenter.NotHadClassPresenterImpl;
 import com.v7.alumniassociation.viewholder.ClassItemViewHolder;
 import com.v7.alumniassociation.widget.RefreshRecyclerView;
@@ -24,6 +25,7 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 /**
  * Created by v7 on 2016/11/9.
@@ -77,6 +79,7 @@ public class NotHadClassFragment extends BaseFragment<NotHadClassContract.NotHad
         adapter.setOnItemClickListener(new ClassItemViewHolder.OnItemClickListener() {
             @Override
             public void onItemClick(ClassListItemBean aClass, int position) {
+                IntentHelper.openJoinClassActivity(getContext(),aClass.id);
 
             }
         });
@@ -104,5 +107,14 @@ public class NotHadClassFragment extends BaseFragment<NotHadClassContract.NotHad
                 refreshRecyclerView.setRefreshedBottomList(list);
             }
         }
+    }
+
+    @OnClick(R.id.titleFunction)
+    public void onFunctionClick(){
+        IntentHelper.openCreateClassActivity(getContext());
+    }
+    @OnClick(R.id.titleBack)
+    public void onTitleFunctionClick(){
+        IntentHelper.openSearchClassActivity(getContext());
     }
 }

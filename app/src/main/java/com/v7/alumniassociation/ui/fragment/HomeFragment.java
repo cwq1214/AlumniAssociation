@@ -3,6 +3,7 @@ package com.v7.alumniassociation.ui.fragment;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,6 +16,7 @@ import android.widget.TextView;
 
 import com.balysv.materialripple.MaterialRippleLayout;
 import com.v7.alumniassociation.R;
+import com.v7.alumniassociation.adapter.FengcaiAdapter;
 import com.v7.alumniassociation.adapter.NewsAdapter;
 import com.v7.alumniassociation.adapter.ViewViewPagerAdapter;
 import com.v7.alumniassociation.base.BaseFragment;
@@ -88,9 +90,26 @@ public class HomeFragment extends BaseFragment<HomeContract.HomePresenter> imple
         titleFunction.setLayoutParams(functionParam);
         titleTitle.setText("掌上华软");
 
+        titleBackRippleView.setVisibility(View.GONE);
+        titleFunctionRippleView.setVisibility(View.GONE);
+
         viewPager.setAdapter(new ViewViewPagerAdapter(getViewPagerViews()));
 
-        mPresenter.refreshNewsList(-1);
+
+
+        headRg.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                switch (checkedId){
+                    case R.id.rbNews:
+                        viewPager.setCurrentItem(0);
+                        return;
+                    case R.id.rbFengCai:
+                        viewPager.setCurrentItem(1);
+                        return;
+                }
+            }
+        });
     }
 
     private List<View> getViewPagerViews(){
@@ -100,6 +119,13 @@ public class HomeFragment extends BaseFragment<HomeContract.HomePresenter> imple
         initFengCaiRcv();
         views.add(fengcaiRcv);
         return views;
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        mPresenter.refreshNewsList(-1);
+        mPresenter.refreshFengCar(-1);
     }
 
     private void initNewRcv(){
@@ -130,6 +156,20 @@ public class HomeFragment extends BaseFragment<HomeContract.HomePresenter> imple
 
     private void initFengCaiRcv(){
         fengcaiRcv = new RefreshRecyclerView(getContext(),null);
+        fengcaiRcv.setAdapter(new FengcaiAdapter());
+        fengcaiRcv.setLayoutManager(new StaggeredGridLayoutManager(2,LinearLayoutManager.VERTICAL));
+        fengcaiRcv.setOnRefreshListener(new RefreshRecyclerView.CustomOnRefreshListener() {
+            @Override
+            public void refreshTop() {
+                mPresenter.refreshFengCar(-1);
+            }
+
+            @Override
+            public void refreshBottom(int lastIndex) {
+                mPresenter.refreshFengCar(-1);
+            }
+        });
+
     }
 
 
@@ -147,7 +187,11 @@ public class HomeFragment extends BaseFragment<HomeContract.HomePresenter> imple
     }
 
     @Override
-    public void onRefreshFengCaiCallback(boolean isSuccess, List newsBeen, boolean isRefreshTop) {
-
+    public void onRefreshFengCaiCallback(boolean isSuccess, List fengcai, boolean isRefreshTop) {
+        if (isSuccess){
+            fengcaiRcv.setRefreshedTopList(fengcai);
+        }else {
+            fengcaiRcv.stopRefreshing();
+        }
     }
 }

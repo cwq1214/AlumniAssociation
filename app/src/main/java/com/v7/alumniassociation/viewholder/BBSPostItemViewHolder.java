@@ -1,10 +1,12 @@
 package com.v7.alumniassociation.viewholder;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.balysv.materialripple.MaterialRippleLayout;
 import com.v7.alumniassociation.R;
 import com.v7.alumniassociation.bean.BBSPostItemBean;
 
@@ -18,6 +20,8 @@ import butterknife.ButterKnife;
 public class BBSPostItemViewHolder extends BaseViewHolder<BBSPostItemBean> {
 
     OnItemClickListener onItemClickListener;
+    @BindView(R.id.rippleView)
+    MaterialRippleLayout rippleView;
     @BindView(R.id.title)
     TextView title;
     @BindView(R.id.date)
@@ -36,7 +40,7 @@ public class BBSPostItemViewHolder extends BaseViewHolder<BBSPostItemBean> {
         super(LayoutInflater.from(parent.getContext()).inflate(R.layout.layout_bbs_post_item, parent, false));
         ButterKnife.bind(this, itemView);
 
-        itemView.setOnClickListener(new View.OnClickListener() {
+        rippleView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (onItemClickListener != null) {
@@ -45,10 +49,11 @@ public class BBSPostItemViewHolder extends BaseViewHolder<BBSPostItemBean> {
             }
         });
 
-        itemView.setOnLongClickListener(new View.OnLongClickListener() {
+        rippleView.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
                 return onItemClickListener.onLongClick(data, index);
+
             }
         });
     }

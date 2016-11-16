@@ -24,6 +24,7 @@ public abstract class BaseRefreshRcvAdapter extends RecyclerView.Adapter<BaseVie
         getDataList().clear();
         this.dataList = dataList;
         notifyDataSetChanged();
+
     }
 
     public void refreshBottom(List dataList){

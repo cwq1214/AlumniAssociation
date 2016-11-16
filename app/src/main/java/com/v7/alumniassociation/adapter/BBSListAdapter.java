@@ -10,7 +10,7 @@ import com.v7.alumniassociation.viewholder.BaseViewHolder;
  * Created by v7 on 2016/11/11.
  */
 
-public class BBSAdapter extends BaseRefreshRcvAdapter{
+public class BBSListAdapter extends BaseRefreshRcvAdapter{
 
     BBSPostItemViewHolder.OnItemClickListener onItemClickListener;
 

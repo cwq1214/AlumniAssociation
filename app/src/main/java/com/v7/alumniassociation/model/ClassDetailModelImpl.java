@@ -12,6 +12,7 @@ import com.v7.alumniassociation.bean.UploadImgBean;
 import com.v7.alumniassociation.contract.ClassDetailContract;
 import com.v7.alumniassociation.http.BeanCallback;
 import com.v7.alumniassociation.http.HttpUrl;
+import com.v7.alumniassociation.sp.UserInfo;
 import com.zhy.http.okhttp.OkHttpUtils;
 
 import org.json.JSONException;
@@ -215,7 +216,17 @@ public class ClassDetailModelImpl implements ClassDetailContract.ClassDetailMode
 
     @Override
     public void changeAdministrator(int classId, int userId, final BaseCallback callback) {
-        OkHttpUtils.postString().url(HttpUrl.domain+HttpUrl.setAdmin).build().execute(new BeanCallback<BaseJson>(context) {
+
+        JSONObject jsonObject = new JSONObject();
+        try {
+            jsonObject.put("userId",userId);
+            jsonObject.put("classId",classId);
+            jsonObject.put("set",1);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        OkHttpUtils.postString().url(HttpUrl.domain+HttpUrl.setAdmin).content(jsonObject.toString()).build().execute(new BeanCallback<BaseJson>(context) {
             @Override
             public void onError(Call call, Exception e, int id) {
                 callback.result(false,e.getMessage(),null);
@@ -224,6 +235,7 @@ public class ClassDetailModelImpl implements ClassDetailContract.ClassDetailMode
             @Override
             public void onResponse(BaseJson response, int id) {
                 if (response.ret){
+                    UserInfo.setClassId(null);
                     callback.result(true,null,null);
                 }else {
                     callback.result(false,response.forUser,null);
@@ -265,7 +277,7 @@ public class ClassDetailModelImpl implements ClassDetailContract.ClassDetailMode
     @Override
     public void dissolveClass(int classId, final BaseCallback callback) {
 
-        OkHttpUtils.postString().url(HttpUrl.domain+HttpUrl.dissolve+classId).build().execute(new BeanCallback<BaseJson>(context) {
+        OkHttpUtils.post().url(HttpUrl.domain+HttpUrl.dissolve+classId).build().execute(new BeanCallback<BaseJson>(context) {
             @Override
             public void onError(Call call, Exception e, int id) {
                 callback.result(false,e.getMessage(),null);

@@ -34,12 +34,12 @@
                 <com.v7.alumniassociation.widget.GoView
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
-                    app:gv_subTitleText="级别"
+                    app:gv_titleText="级别"
                     android:id="@+id/classLevel" />
                 <com.v7.alumniassociation.widget.GoView
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
-                    app:gv_subTitleText="班级介绍"
+                    app:gv_titleText="班级介绍"
                     android:id="@+id/classIntroduce" />
             </LinearLayout>
 

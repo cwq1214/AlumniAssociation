@@ -154,6 +154,11 @@ public class RefreshRecyclerView extends FrameLayout {
     public void setRefreshedTopList(List dataList){
         adapter.refreshTop(dataList);
         setRefresh(false);
+        if (dataList==null||dataList.size()==0){
+            centerMessage.setVisibility(VISIBLE);
+        }else {
+            centerMessage.setVisibility(GONE);
+        }
     }
     //上拉加载后传值
     public void setRefreshedBottomList(List dataList){

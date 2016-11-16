@@ -33,13 +33,34 @@ public class NewsDetailPresenterImpl implements NewsDetailContract.NewsDetailPre
     }
 
     @Override
-    public void collection(NewsBean bean) {
-
+    public void collection(NewsBean bean,boolean collection) {
+        model.collection(bean,collection, new BaseCallback() {
+            @Override
+            public void result(boolean isSuccess, String message, Object extra) {
+                view.onCollectionClick(isSuccess, (Boolean) extra);
+            }
+        });
     }
 
     @Override
     public void doLike(int newId, int userId, boolean like) {
+        model.doLike(newId, userId, like, new BaseCallback() {
+            @Override
+            public void result(boolean isSuccess, String message, Object extra) {
+                view.onDoLick(isSuccess, (Boolean) extra);
+                view.showToast(message);
+            }
+        });
+    }
 
+    @Override
+    public void isCollection(int newsId) {
+        model.isCollection(newsId, new BaseCallback() {
+            @Override
+            public void result(boolean isSuccess, String message, Object extra) {
+                view.onIsCollectionCallback(isSuccess, (Boolean) extra);
+            }
+        });
     }
 
     @Override

@@ -74,6 +74,11 @@ public class InputSingleTextDialog extends Dialog {
         this.canNull = canNull;
     }
 
+    @Override
+    public void setTitle(CharSequence title) {
+        dialogTitle.setText(title);
+    }
+
     public interface OnDialogDoneListener{
         void onDialogClick(String inputText);
     }

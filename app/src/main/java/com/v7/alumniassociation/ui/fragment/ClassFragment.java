@@ -43,6 +43,12 @@ public class ClassFragment extends BaseFragment<ClassContract.ClassPresenter> im
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
         mPresenter.hadClass();
     }
 

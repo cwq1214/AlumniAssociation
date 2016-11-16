@@ -16,10 +16,12 @@ import com.v7.alumniassociation.bean.NewsBean;
 import com.v7.alumniassociation.contract.NewsDetailContract;
 import com.v7.alumniassociation.helper.IntentHelper;
 import com.v7.alumniassociation.presenter.NewsDetailPresenterImpl;
+import com.v7.alumniassociation.sp.UserInfo;
 import com.v7.alumniassociation.util.Dimension;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 /**
  * Created by v7 on 2016/11/12.
@@ -51,6 +53,9 @@ public class NewsDetailActivity extends BaseActivity<NewsDetailContract.NewsDeta
 
     Integer id;
 
+    NewsBean bean;
+    boolean isCollection;
+
     @Override
     protected View getContentView() {
         return null;
@@ -80,11 +85,15 @@ public class NewsDetailActivity extends BaseActivity<NewsDetailContract.NewsDeta
         FrameLayout.LayoutParams functionParam = new FrameLayout.LayoutParams(Dimension.dp2px(getContext(), 24), Dimension.dp2px(getContext(), 24));
         functionParam.gravity = Gravity.CENTER;
         titleFunction.setLayoutParams(functionParam);
+
     }
+
 
     @Override
     public void onLoadNewsDetail(boolean isSuccess, NewsBean newsBean) {
         if (isSuccess&&newsBean!=null){
+            bean = newsBean;
+            bean.newsId = id;
             newTitle.setText(newsBean.n_title);
             createTime.setText(newsBean.createdTime);
             Glide.with(getContext()).load(newsBean.n_img).into(img);
@@ -97,16 +106,71 @@ public class NewsDetailActivity extends BaseActivity<NewsDetailContract.NewsDeta
             }
 
             content.setText(newsBean.n_content);
+
+            mPresenter.isCollection(bean.newsId);
         }
     }
 
     @Override
     public void onCollectionClick(boolean isSuccess, boolean collection) {
+        if (isSuccess){
+            this.isCollection = collection;
+            if (collection){
+                titleFunction.setBackgroundResource(R.mipmap.star_1);
+            }else {
+                titleFunction.setBackgroundResource(R.mipmap.star);
 
+            }
+        }
     }
 
     @Override
     public void onDoLick(boolean isSuccess, boolean isLike) {
+        if(isSuccess){
+//            int like = Integer.parseInt(likeNum.getText().toString());
+//            if (isLike){
+//                likeImg.setImageResource(R.mipmap.good);
+//                likeNum.setText(like+1+"");
+//            }else {
+//                likeImg.setImageResource(R.mipmap.good_nor);
+//                likeNum.setText(like-1+"");
+//            }
+            mPresenter.loadNewsDetail(bean.newsId);
+        }
+    }
 
+    @Override
+    public void onIsCollectionCallback(boolean isSuccess, boolean isCollection) {
+        if (isSuccess){
+            this.isCollection = isCollection;
+            if (isCollection){
+                titleFunction.setBackgroundResource(R.mipmap.star_1);
+            }else {
+                titleFunction.setBackgroundResource(R.mipmap.star);
+
+            }
+        }
+    }
+
+    @OnClick(R.id.titleFunction)
+    public void onTitleFunctionClick(){
+        if (UserInfo.getUserId()==null){
+            IntentHelper.openLoginActivity(getContext());
+            showToast("请先登陆");
+            return;
+        }
+
+        if (bean!=null)
+            mPresenter.collection(bean,!isCollection);
+    }
+    @OnClick(R.id.likeImg)
+    public void onLikeImg(){
+        if (UserInfo.getUserId()==null){
+            IntentHelper.openLoginActivity(getContext());
+            showToast("请先登陆");
+            return;
+        }
+
+        mPresenter.doLike(bean.newsId, UserInfo.getUserId(),bean.liked);
     }
 }

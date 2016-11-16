@@ -111,16 +111,16 @@ public class PersonalFragment extends BaseFragment<PersonalContract.PersonalPres
 
     @OnClick(R.id.focusList)
     public void onFocusListClick(){
-
+        showToast("敬请期待");
     }
 
     @OnClick(R.id.fansList)
     public void onFansListClick(){
-
+        showToast("敬请期待");
     }
 
     @OnClick(R.id.collectionList)
     public void onCollectionListClick(){
-
+        IntentHelper.openCollectionListActivity(getContext());
     }
 }

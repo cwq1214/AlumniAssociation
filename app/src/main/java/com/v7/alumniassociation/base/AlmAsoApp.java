@@ -4,6 +4,9 @@ import android.app.Application;
 import android.os.Build;
 import android.util.Log;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.GlideBuilder;
+import com.bumptech.glide.load.model.GlideUrl;
 import com.v7.alumniassociation.BuildConfig;
 import com.v7.alumniassociation.sp.UserInfo;
 import com.zhy.http.okhttp.OkHttpUtils;
@@ -29,6 +32,7 @@ public class AlmAsoApp extends Application {
 
         initOkHttp();
         UserInfo.init(this);
+
     }
 
     private void initOkHttp(){

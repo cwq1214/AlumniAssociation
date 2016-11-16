@@ -42,6 +42,7 @@
     </LinearLayout>
 
     <TextView
+        android:enabled="false"
         android:text="同意"
         android:paddingLeft="8dp"
         android:paddingRight="8dp"

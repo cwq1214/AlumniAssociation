@@ -11,8 +11,14 @@ import com.v7.alumniassociation.http.BeanCallback;
 import com.v7.alumniassociation.http.HttpUrl;
 import com.zhy.http.okhttp.OkHttpUtils;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.List;
 
 import okhttp3.Call;
@@ -57,12 +63,30 @@ public class SendPostModelImpl implements SendPostContract.SendPostModel {
 
     @Override
     public void uploadPost(List<String> images, int userId, String content, final BaseCallback callback) {
-        String par = "?userId"+userId+"&content="+content;
-        if (images!=null)
-        for (int i=0;i<images.size();i++){
-            par+="&img="+images.get(i);
+        JSONObject jsonObject = new JSONObject();
+        try {
+            jsonObject.put("userId",userId);
+            jsonObject.put("content",content);
+            JSONArray img = new JSONArray();
+            if (images!=null)
+            for (int i=0;i<images.size();i++){
+                File file = new File(images.get(i));
+                FileInputStream inputFile = new FileInputStream(file);
+                byte[] buffer = new byte[(int) file.length()];
+                inputFile.read(buffer);
+                inputFile.close();
+                img.put(Base64.encodeToString(buffer,Base64.DEFAULT));
+            }
+            jsonObject.put("img",img);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
-        OkHttpUtils.get().url(HttpUrl.domain+HttpUrl.sendPost+par).build().execute(new BeanCallback<BaseJson>(context) {
+
+        OkHttpUtils.postString().url(HttpUrl.domain+HttpUrl.sendPost).content(jsonObject.toString()).build().execute(new BeanCallback<BaseJson>(context) {
             @Override
             public void onError(Call call, Exception e, int id) {
                 callback.result(false,e.getMessage(),null);

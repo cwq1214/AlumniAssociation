@@ -43,7 +43,7 @@ public class ModifyPsdModelImpl implements ModifyPsdContract.ModifyPsdModel {
                 if (response.ret){
                     callback.result(true,"修改成功",null);
                 }else {
-                    callback.result(false,"修改失败",null);
+                    callback.result(false,response.forUser,null);
                 }
             }
         });

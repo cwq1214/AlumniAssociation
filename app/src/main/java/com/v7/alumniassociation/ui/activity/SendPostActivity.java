@@ -133,11 +133,9 @@ public class SendPostActivity extends BaseActivity<SendPostContract.SendPostPres
             showToast("请输入帖子内容");
             return;
         }
-        if (localImgPath.size()==0){
-            mPresenter.uploadPost(null,UserInfo.getUserId(),edittext.getText().toString());
-        }else {
-            mPresenter.uploadImage(localImgPath);
-        }
+
+        mPresenter.uploadPost(localImgPath,UserInfo.getUserId(),edittext.getText().toString());
+
     }
 
     @OnClick(R.id.addImg)
@@ -166,6 +164,13 @@ public class SendPostActivity extends BaseActivity<SendPostContract.SendPostPres
 
     private void addPreviewImgItem(String img) {
         ImageView imageView = new ImageView(this);
+        imageView.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                flowLayout.removeView(v);
+                return true;
+            }
+        });
         imageView.setBackgroundColor(getResources().getColor(R.color.borderColor));
         imageView.setLayoutParams(getImageViewLayoutParams());
         Glide.with(this).load(img).into(imageView);
