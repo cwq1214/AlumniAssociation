@@ -47,8 +47,6 @@ public class BrowseImgActivity extends AppCompatActivity {
     TextView titleFunction;
     @BindView(R.id.titleFunctionRippleView)
     MaterialRippleLayout titleFunctionRippleView;
-//    @BindView(R.barId.viewPager)
-//    ExtendedViewPager viewPager;
     @BindView(R.id.image)
     TouchImageView imageView;
 
