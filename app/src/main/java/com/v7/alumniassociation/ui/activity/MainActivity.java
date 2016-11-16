@@ -72,14 +72,6 @@ public class MainActivity extends AppCompatActivity {
                         viewPager.setCurrentItem(2);
                         break;
                     case R.id.btn_main_home:
-
-//                        if (UserInfo.hadClass()&&!(fragments.get(2) instanceof HadClassFragment)){
-//                            fragments.remove(2);
-//                            fragments.add(new HadClassFragment());
-//                        }else if (!UserInfo.hadClass()&&!(fragments.get(2) instanceof NotHadClassFragment)){
-//                            fragments.remove(2);
-//                            fragments.add(new NotHadClassFragment());
-//                        }
                         viewPager.setCurrentItem(0);
                         break;
                     case R.id.btn_main_personal:
