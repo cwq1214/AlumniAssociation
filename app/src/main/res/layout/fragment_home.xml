@@ -30,7 +30,7 @@
             android:gravity="center"
             android:button="@null"
             android:id="@+id/rbFengCai"
-            android:text="校园风采"
+            android:text="校友风采"
             android:layout_weight="1"
             android:layout_width="0dp"
             android:layout_height="match_parent" />

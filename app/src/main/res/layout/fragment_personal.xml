@@ -28,21 +28,6 @@
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="8dp"/>
-
-                <com.v7.alumniassociation.widget.GoView
-                    android:id="@+id/fansList"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    app:gv_titleText="粉丝列表"
-                    app:gv_subTitleText=""
-                    />
-                <com.v7.alumniassociation.widget.GoView
-                    android:id="@+id/focusList"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    app:gv_titleText="关注列表"
-                    app:gv_subTitleText=""
-                    />
                 <com.v7.alumniassociation.widget.GoView
                     android:id="@+id/collectionList"
                     android:layout_width="match_parent"

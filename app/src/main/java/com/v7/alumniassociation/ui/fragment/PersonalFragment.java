@@ -45,10 +45,6 @@ public class PersonalFragment extends BaseFragment<PersonalContract.PersonalPres
     TextView userName;
     @BindView(R.id.userNum)
     TextView userNum;
-    @BindView(R.id.fansList)
-    GoView fansList;
-    @BindView(R.id.focusList)
-    GoView focusList;
     @BindView(R.id.collectionList)
     GoView collectionList;
 
@@ -96,27 +92,12 @@ public class PersonalFragment extends BaseFragment<PersonalContract.PersonalPres
             if (!TextUtils.isEmpty(avatar))
                 Glide.with(this).load(avatar).into(userAvatar);
 
-            if (user.fansCount!=0)
-            fansList.setSubTitleText(String.valueOf(user.fansCount));
-
-            if (user.followCount!=0)
-            focusList.setSubTitleText(String.valueOf(user.followCount));
         }
     }
 
     @OnClick(R.id.personalHeadView)
     public void onHeadViewClick(){
         IntentHelper.openPersonalInfoActivity(getContext());
-    }
-
-    @OnClick(R.id.focusList)
-    public void onFocusListClick(){
-        showToast("敬请期待");
-    }
-
-    @OnClick(R.id.fansList)
-    public void onFansListClick(){
-        showToast("敬请期待");
     }
 
     @OnClick(R.id.collectionList)

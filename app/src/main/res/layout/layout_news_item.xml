@@ -22,7 +22,9 @@
         android:layout_toRightOf="@id/newsImg"
         android:id="@+id/newsTitle"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:ellipsize="end"
+        android:lines="2" />
 
     <TextView
         android:layout_toRightOf="@id/newsImg"

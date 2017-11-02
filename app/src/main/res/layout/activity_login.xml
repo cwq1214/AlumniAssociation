@@ -72,7 +72,7 @@
             <TextView
                 android:layout_marginTop="8dp"
                 android:textSize="12dp"
-                android:text="账号为学号,初始密码为身份证后6位,X用0代替"
+                android:text="账号为学号,初始密码为000000"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
 

@@ -52,9 +52,19 @@ public class SingleChooseDialog extends Dialog {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.dialog_singlechoose);
         ButterKnife.bind(this);
-        buildItem();
+
+        dialogRg.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                currentSelIndex = group.indexOfChild(group.findViewById(checkedId));
+                currentSelText = names.get(currentSelIndex);
+            }
+        });
 
         dialogTitle.setText(titleText);
+
+        buildItem();
+
     }
 
     public void addItem(String text,boolean checked){
@@ -68,8 +78,6 @@ public class SingleChooseDialog extends Dialog {
     private void buildItem(){
         dialogRg.removeAllViews();
 
-
-
         for (int i = 0; i < names.size(); i++) {
             RadioButton radioButton = new RadioButton(getContext());
             radioButton.setId(i);
@@ -77,22 +85,18 @@ public class SingleChooseDialog extends Dialog {
             drawable.setBounds(0, 0, drawable.getMinimumWidth(), drawable.getMinimumHeight());
             radioButton.setButtonDrawable(getContext().getResources().getDrawable(android.R.color.transparent));
             radioButton.setCompoundDrawables(drawable,null,null,null);
-            radioButton.setChecked(checkedList.get(i));
+
             radioButton.setTextColor(Color.BLACK);
             radioButton.setText(names.get(i));
             LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
             params.setMargins(20,0,0,0);
             radioButton.setLayoutParams(params);
             dialogRg.addView(radioButton,params);
+            radioButton.setChecked(checkedList.get(i));
         }
 
-        dialogRg.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(RadioGroup group, int checkedId) {
-                currentSelIndex = checkedId;
-                currentSelText = names.get(checkedId);
-            }
-        });
+
+
     }
 
     @OnClick(R.id.dialogCancel)

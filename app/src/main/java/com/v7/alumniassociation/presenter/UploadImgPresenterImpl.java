@@ -31,7 +31,7 @@ public class UploadImgPresenterImpl implements UploadImgContract.UploadImgPresen
                 @Override
                 public void result(boolean isSuccess, String message, Object extra) {
                     int callbackCount = count.addAndGet(1);
-                    if (callbackCount == imgPath.size()-1){
+                    if (callbackCount == imgPath.size()){
                         view.uploadImgCallback(true);
                         view.showToast("上传完毕！");
                     }

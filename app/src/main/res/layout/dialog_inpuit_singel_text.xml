@@ -20,6 +20,8 @@
         android:layout_height="60dp">
 
     <EditText
+        android:textColor="#000000"
+        android:textColorHint="@color/borderColor"
         android:textSize="12dp"
         android:hint="请输入"
         android:layout_marginLeft="16dp"
